@@ -1,9 +1,7 @@
-<script setup>
-import Test from '@/components/pages/Test.vue';
-</script>
-
 <template>
-  <main>
-   <Test />
-  </main>
+  <HomePage />
 </template>
+
+<script setup>
+import HomePage from '@/components/pages/HomePage.vue';
+</script>

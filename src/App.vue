@@ -1,11 +1,14 @@
 <template>
-  <RouterView />
-  <header>
-    <h1>Test</h1>
-  </header>
-
-  <main>
-    
-  </main>
+  <div id="app">
+    <NavbarMenu />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
+
+<script setup>
+import NavbarMenu from './components/layouts/NavbarMenu.vue';
+import Footer from './components/layouts/Footer.vue';
+import { RouterView } from 'vue-router';
+</script>
 
