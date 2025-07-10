@@ -1,12 +1,12 @@
 <template>
     <div class="max-w-sm bg-white rounded-2xl border !border-[var(--color-gray-200)] overflow-hidden">
-        <img :src="props.image" alt="Course image" class="w-full h-50 object-cover">
+        <img :src="props.image" alt="Course image" class="w-full h-54 object-cover">
         <div class="p-4">
             <span class="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full mb-2">
                 {{ props.badge }}
             </span>
             <h2 class="text-lg font-semibold mb-2">{{ props.title }}</h2>
-            <p class="text-gray-600 text-sm mb-4 ">
+            <p class="text-gray-600 text-base mb-4 line-clamp-3">
                 {{ props.description }}
             </p>
             <a href="#" class="flex ">Read More <svg class="pt-2" width="24px" height="24px" viewBox="0 0 24 24"
