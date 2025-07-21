@@ -1,6 +1,6 @@
 <template>
     <section class="my-10">
-        <div class="px-[120px]">
+        <!-- <div class="px-[120px]">
 
             <div class="grid grid-cols-3 mb-9">
                 <div class="relative w-full">
@@ -50,61 +50,82 @@
                     <p>Please search another course.</p>
                 </div>
             </div>
+        </div> -->
+
+        <div class="px-[120px]">
+            <!-- <div class="grid gap-13 sm:grid-cols-2 md:grid-cols-3" v-if="filteredCourses.length > 0">
+                <CourseCard v-for="course in filteredCourses" :key="course.id" :image="course.image"
+                    :badge="course.badge" :title="course.title" :description="course.description" />
+            </div> -->
+            <div class="grid gap-13 sm:grid-cols-2 md:grid-cols-3">
+                <FakeProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
+            </div>
+
         </div>
     </section>
 </template>
 
 <script setup>
 import CourseCard from '@/components/partials/CourseCard.vue'
-import { ref, computed } from 'vue';
+import FakeProductCard from './FakeProductCard.vue';
+import { ref, computed, onMounted } from 'vue';
+import { useProductStore } from '@/stores/productStore';
 
-const search = ref('')
-
-const courses = [
-    {
-        image: "https://www.achieversit.com/management/uploads/course_image/vuejs-img.jpeg",
-        badge: "New",
-        title: "Vue.js",
-        description: "Discover the power of Vue.js and learn how to create highly interactive and dynamic user interfaces. This course covers everything from the basics of reactive data binding to advanced component design, state management with Vuex, and integrating third-party libraries. Perfect for beginners and experienced developers who want to master modern front-end development."
-    },
-    {
-        image: "https://img-c.udemycdn.com/course/750x422/6431435_bff1.jpg",
-        badge: "Popular",
-        title: "Nuxt",
-        description: "Deep dive into the Nuxt framework and explore how it extends Vue.js for building powerful server-side rendered and statically generated applications. You'll learn about advanced features like file-based routing, dynamic middleware, API integration, SEO optimization, and how to deploy high-performance Nuxt apps to production."
-    },
-    {
-        image: "https://miro.medium.com/v2/resize:fit:1200/0*vc4LVhHM3tH-2Sfh.jpg",
-        badge: "Popular",
-        title: "React.js",
-        description: "Build scalable and efficient user interfaces with React.js by mastering JSX, functional and class components, props, state, and lifecycle methods. This course also explores hooks, context API, and modern design patterns to help you create responsive single-page applications and real-world projects that follow industry best practices."
-    },
-    {
-        image: "https://kiyantraininginstitute.in/wp-content/uploads/2024/07/laravel_course_in_delhi.gif",
-        badge: "New",
-        title: "Laravel",
-        description: "Master the Laravel PHP framework to build robust, secure, and maintainable web applications. You'll learn about routing, Eloquent ORM, blade templating, middleware, authentication, RESTful APIs, and best practices for developing enterprise-grade applications with Laravel. This course is ideal for anyone wanting to upgrade their PHP skills."
-    },
-    {
-        image: "https://5.imimg.com/data5/YV/QF/DJ/GLADMIN-57611858/selection-378-500x500.png",
-        badge: "Free",
-        title: "HTML5",
-        description: "Learn the foundations of modern web development by diving deep into HTML5. Understand semantic markup, multimedia integration, forms, APIs like Geolocation and Web Storage, and how HTML5 works together with CSS and JavaScript to create accessible, SEO-friendly, and responsive websites suitable for any device."
-    },
-    {
-        image: "https://www.pragimtech.com/wp-content/uploads/2019/03/java-script.jpg",
-        badge: "Trending",
-        title: "JavaScript",
-        description: "Get up to speed with modern JavaScript, from core concepts like variables, data types, and control structures to advanced topics like closures, asynchronous programming with promises and async/await, ES6+ features, and object-oriented design. Build interactive, dynamic web applications and become proficient in the language of the web."
-    }
-];
-
-
-const filteredCourses = computed(() => {
-    if (!search.value) return courses
-    return courses.filter(course =>
-        course.title.toLowerCase().includes(search.value.toLowerCase())
-    )
+const productStore = useProductStore()
+onMounted(async () => {
+    await productStore.loadProducts()
 })
+
+// const search = ref('')
+
+// const courses = [
+//     {
+//         image: "https://www.achieversit.com/management/uploads/course_image/vuejs-img.jpeg",
+//         badge: "New",
+//         title: "Vue.js",
+//         description: "Discover the power of Vue.js and learn how to create highly interactive and dynamic user interfaces. This course covers everything from the basics of reactive data binding to advanced component design, state management with Vuex, and integrating third-party libraries. Perfect for beginners and experienced developers who want to master modern front-end development."
+//     },
+//     {
+//         image: "https://img-c.udemycdn.com/course/750x422/6431435_bff1.jpg",
+//         badge: "Popular",
+//         title: "Nuxt",
+//         description: "Deep dive into the Nuxt framework and explore how it extends Vue.js for building powerful server-side rendered and statically generated applications. You'll learn about advanced features like file-based routing, dynamic middleware, API integration, SEO optimization, and how to deploy high-performance Nuxt apps to production."
+//     },
+//     {
+//         image: "https://miro.medium.com/v2/resize:fit:1200/0*vc4LVhHM3tH-2Sfh.jpg",
+//         badge: "Popular",
+//         title: "React.js",
+//         description: "Build scalable and efficient user interfaces with React.js by mastering JSX, functional and class components, props, state, and lifecycle methods. This course also explores hooks, context API, and modern design patterns to help you create responsive single-page applications and real-world projects that follow industry best practices."
+//     },
+//     {
+//         image: "https://kiyantraininginstitute.in/wp-content/uploads/2024/07/laravel_course_in_delhi.gif",
+//         badge: "New",
+//         title: "Laravel",
+//         description: "Master the Laravel PHP framework to build robust, secure, and maintainable web applications. You'll learn about routing, Eloquent ORM, blade templating, middleware, authentication, RESTful APIs, and best practices for developing enterprise-grade applications with Laravel. This course is ideal for anyone wanting to upgrade their PHP skills."
+//     },
+//     {
+//         image: "https://5.imimg.com/data5/YV/QF/DJ/GLADMIN-57611858/selection-378-500x500.png",
+//         badge: "Free",
+//         title: "HTML5",
+//         description: "Learn the foundations of modern web development by diving deep into HTML5. Understand semantic markup, multimedia integration, forms, APIs like Geolocation and Web Storage, and how HTML5 works together with CSS and JavaScript to create accessible, SEO-friendly, and responsive websites suitable for any device."
+//     },
+//     {
+//         image: "https://www.pragimtech.com/wp-content/uploads/2019/03/java-script.jpg",
+//         badge: "Trending",
+//         title: "JavaScript",
+//         description: "Get up to speed with modern JavaScript, from core concepts like variables, data types, and control structures to advanced topics like closures, asynchronous programming with promises and async/await, ES6+ features, and object-oriented design. Build interactive, dynamic web applications and become proficient in the language of the web."
+//     }
+// ];
+
+
+// const filteredCourses = computed(() => {
+//     if (!search.value) return courses
+//     return courses.filter(course =>
+//         course.title.toLowerCase().includes(search.value.toLowerCase())
+//     )
+// })
+
+
+
 
 </script>
