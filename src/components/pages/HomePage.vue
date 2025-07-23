@@ -57,10 +57,27 @@
                 <CourseCard v-for="course in filteredCourses" :key="course.id" :image="course.image"
                     :badge="course.badge" :title="course.title" :description="course.description" />
             </div> -->
-            <div class="grid gap-13 sm:grid-cols-2 md:grid-cols-3">
+            <!-- <div class="grid gap-13 sm:grid-cols-2 md:grid-cols-3">
                 <FakeProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
+            </div> -->
+            <div class="p-8 space-y-6 text-center">
+                <h1 class="text-4xl font-bold">{{ $t('home_page.title') }}</h1>
+                <p class="text-lg text-gray-600">{{ $t('home_page.subtitle') }}</p>
+                <p class="max-w-2xl mx-auto text-gray-500">
+                    {{ $t('home_page.description') }}
+                </p>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                    {{ $t('home_page.shop_now') }}
+                </button>
+                <div class="mt-8">
+                    <h2 class="text-2xl font-semibold mb-4">{{ $t('home_page.features_title') }}</h2>
+                    <ul class="list-disc list-inside text-left max-w-md mx-auto text-gray-700">
+                        <li>{{ $t('home_page.features.fast_shipping') }}</li>
+                        <li>{{ $t('home_page.features.best_quality') }}</li>
+                        <li>{{ $t('home_page.features.customer_support') }}</li>
+                    </ul>
+                </div>
             </div>
-
         </div>
     </section>
 </template>

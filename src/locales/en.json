@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "product": "Product",
+    "cart": "Cart"
+  },
+  "home_page": {
+    "title": "Welcome to Our Shop!",
+    "subtitle": "Find the best deals on quality products.",
+    "description": "We offer a wide variety of products carefully selected to meet your needs. Enjoy secure shopping, fast delivery, and top-notch customer service.",
+    "shop_now": "Shop Now",
+    "features_title": "Why Choose Us?",
+    "features": {
+      "fast_shipping": "Fast & reliable shipping",
+      "best_quality": "High quality guaranteed",
+      "customer_support": "24/7 Customer support"
+    }
+  }
+}
