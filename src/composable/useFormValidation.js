@@ -10,7 +10,7 @@ export function useFormValidation(schema, formData) {
   }
   function validateForm() {
     clearErrors();
-    const result = schema.safeParse(formData.value);
+    const result = schema.safeParse(formData);
     if (!result.success) {
       const formatted = result.error.format();
       for (const field in formatted) {

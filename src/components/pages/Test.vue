@@ -41,11 +41,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import { z } from 'zod'
 import { useFormValidation } from '@/composable/useFormValidation'
 
-const form = ref({ name: '', email: '', message: '' })
+const form = reactive({ name: '', email: '', message: '' })
 const schema = z.object({
     name: z.string().min(1, 'Name is required'),
     email: z.string().email('Invalid email address'),
@@ -57,7 +57,7 @@ const { formErrors, validateForm, clearErrors } = useFormValidation(schema, form
 function submit() {
     if (!validateForm()) return
     alert('Success!')
-    form.value = { name: '', email: '', message: '' }
+    form = { name: '', email: '', message: '' }
     clearErrors()
 }
 </script>
