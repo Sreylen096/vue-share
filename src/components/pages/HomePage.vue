@@ -60,7 +60,7 @@
             <!-- <div class="grid gap-13 sm:grid-cols-2 md:grid-cols-3">
                 <FakeProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
             </div> -->
-            <div class="p-8 space-y-6 text-center">
+            <!-- <div class="p-8 space-y-6 text-center">
                 <h1 class="text-4xl font-bold">{{ $t('home_page.title') }}</h1>
                 <p class="text-lg text-gray-600">{{ $t('home_page.subtitle') }}</p>
                 <p class="max-w-2xl mx-auto text-gray-500">
@@ -77,12 +77,14 @@
                         <li>{{ $t('home_page.features.customer_support') }}</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
+<Test />
 </template>
 
 <script setup>
+import Test from './Test.vue';
 import CourseCard from '@/components/partials/CourseCard.vue'
 import FakeProductCard from './FakeProductCard.vue';
 import { ref, computed, onMounted } from 'vue';
@@ -141,8 +143,5 @@ onMounted(async () => {
 //         course.title.toLowerCase().includes(search.value.toLowerCase())
 //     )
 // })
-
-
-
 
 </script>
